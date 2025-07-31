@@ -1,0 +1,71 @@
+{{ 'eid-offer-hero.css' | asset_url | stylesheet_tag }}
+
+<!-- Hero Area Section -->
+<div class="hero-area">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0763/3643/1325/files/Hero-Sectionbg-bottom-shape.png?v=1751345929"
+    alt="hero-area-shape"
+    class="hero-area-shape"
+  >
+  <div class="hero-area-wrapper">
+    <!-- Right side: Hero Content -->
+    <div class="hero-area-content">
+      <p class="hero-area-quality-badge">
+        <strong>{{ section.settings.eid_offer }}</strong> Supper Shopping Day
+      </p>
+      <h1 class="hero-area-main-title">
+        <span
+          >UPTO <span class="colored-text">{{ section.settings.discount_text }}</span>
+        </span>
+        <strong>{{ section.settings.discount_percentage }}</strong>
+      </h1>
+      <p class="hero-area-product-info">{{ section.settings.offer_duration }}</p>
+      <a href="{{ section.settings.button_link }}" class="hero-area-buy-now-btn">
+        {{ section.settings.button_text }}
+        {% if section.settings.button_arrow_image %}
+          <img src="{{ section.settings.button_arrow_image | image_url }}" alt="Arrow" class="hero-area-btn-arrow-img">
+        {% else %}
+          <span class="hero-area-btn-arrow">{{ section.settings.button_arrow }}</span>
+        {% endif %}
+      </a>
+    </div>
+    <!-- Left side: Hero Media -->
+    <div class="hero-area-media">
+      <div class="hero-area-image-container">
+        {% if section.settings.product_image %}
+          <img
+            src="{{ section.settings.product_image | image_url: width: auto, height: auto }}"
+            alt="{{ section.settings.product_image.alt | escape }}"
+            class="hero-area-image"
+          >
+        {% else %}
+          <img
+            src="https://via.placeholder.com/400x500/4caf50/ffffff?text=Nutrivitaa+Peanut+Butter+Products"
+            alt="Placeholder image"
+            class="hero-area-image"
+          >
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Eid Hero Area",
+  "settings": [
+     { "type": "image_picker", "id": "product_image",        "label": "Product Image" },
+    { "type": "text", "id": "eid_offer", "label": "Eid Offer Text", "default": "Eid Offer" },
+    { "type": "text", "id": "discount_text", "label": "Discount Text", "default": "SELLS" },
+    { "type": "text", "id": "discount_percentage", "label": "Discount Percentage", "default": "60% OFF" },
+    { "type": "text", "id": "offer_duration", "label": "Offer Duration", "default": "From 2nd March - 30th April 2025 only" },
+    { "type": "text", "id": "button_text", "label": "Button Text", "default": "BUY NOW" },
+    { "type": "url", "id": "button_link", "label": "Button Link" },
+    { "type": "text", "id": "button_arrow", "label": "Button Arrow (text)", "default": "›" },
+    { "type": "image_picker", "id": "button_arrow_image", "label": "Button Arrow Image" }
+  ],
+  "presets": [
+    { "name": "Eid Hero Area", "category": "Custom" }
+  ]
+}
+{% endschema %}

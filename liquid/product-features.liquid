@@ -1,0 +1,201 @@
+{{ 'product-features.css' | asset_url | stylesheet_tag }}
+
+<section class="products-features-area">
+  <h2 class="section-titile">{{ section.settings.heading | escape }}</h2>
+
+  <div class="products-area-wrapper">
+    <!-- Left Feature List -->
+    <div class="features-list-area">
+      {% for block in section.blocks %}
+        {% if block.type == 'feature_left' %}
+          <div class="product-feature-item" {{ block.shopify_attributes }}>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Center Image and Arrows -->
+    <div class="features-image-area">
+      <div class="arrow-shape">
+        {% if section.settings.arrow_tl %}
+          <img src="{{ section.settings.arrow_tl | image_url }}" alt="arrow top-left" class="tl-shape">
+        {% endif %}
+        {% if section.settings.arrow_tr %}
+          <img src="{{ section.settings.arrow_tr | image_url }}" alt="arrow top-right" class="tr-shape">
+        {% endif %}
+        {% if section.settings.arrow_bl %}
+          <img src="{{ section.settings.arrow_bl | image_url }}" alt="arrow bottom-left" class="bl-shape">
+        {% endif %}
+        {% if section.settings.arrow_br %}
+          <img src="{{ section.settings.arrow_br | image_url }}" alt="arrow bottom-right" class="br-shape">
+        {% endif %}
+      </div>
+      {% if section.settings.main_image %}
+        <img src="{{ section.settings.main_image | image_url }}" alt="main-image" class="pfa-main-image">
+      {% endif %}
+    </div>
+
+    <!-- Right Feature List -->
+    <div class="features-list-area">
+      {% for block in section.blocks %}
+        {% if block.type == 'feature_right' %}
+          <div class="product-feature-item" {{ block.shopify_attributes }}>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Ingredients Section -->
+  <h2 class="section-titile title2">{{ section.settings.heading2 | escape }}</h2>
+  <div class="ingredient-section-wrapper">
+    {% for block in section.blocks %}
+      {% if block.type == 'ingredient' %}
+        <div class="ingredient-item" {{ block.shopify_attributes }}>
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title | escape }}">
+          {% endif %}
+          <h5>{{ block.settings.title }}</h5>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <img src="https://cdn.shopify.com/s/files/1/0763/3643/1325/files/Sticker.png?v=1751872915" class="sticker">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0763/3643/1325/files/stiker-bottom-shape.png?v=1752045004"
+    class="stiker-bottom-shape"
+  >
+</section>
+
+{% schema %}
+{
+  "name": "Products Features",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Features Section Heading",
+      "default": "Your Day start to best-way"
+    },
+    {
+      "type": "text",
+      "id": "heading2",
+      "label": "Ingredient Section Heading",
+      "default": "The Powerful Natural Ingredient Blend"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Center Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "arrow_tl",
+      "label": "Arrow Top Left"
+    },
+    {
+      "type": "image_picker",
+      "id": "arrow_tr",
+      "label": "Arrow Top Right"
+    },
+    {
+      "type": "image_picker",
+      "id": "arrow_bl",
+      "label": "Arrow Bottom Left"
+    },
+    {
+      "type": "image_picker",
+      "id": "arrow_br",
+      "label": "Arrow Bottom Right"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_left",
+      "name": "Left Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "425 gm Protein"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Feature Description",
+          "default": "Boosts muscle recovery and keeps you energized."
+        }
+      ]
+    },
+    {
+      "type": "feature_right",
+      "name": "Right Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "Rich in Dietary Fiber"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Feature Description",
+          "default": "Promotes healthy digestion and long-lasting satiety."
+        }
+      ]
+    },
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Ingredient Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Ingredient Title",
+          "default": "Dark Chocolate"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Products Features",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "feature_left"
+        },
+        {
+          "type": "feature_left"
+        },
+        {
+          "type": "feature_right"
+        },
+        {
+          "type": "feature_right"
+        },
+        {
+          "type": "ingredient"
+        },
+        {
+          "type": "ingredient"
+        },
+        {
+          "type": "ingredient"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

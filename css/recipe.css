@@ -1,0 +1,58 @@
+.recipe-blog-area {
+  background-image: linear-gradient(0deg, #dcff82, #fcf8eb);
+  padding-top: 100px;
+}
+.custom-recipe-slider .page-width {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+.custom-recipe-slider.multicolumn {
+  background-image: linear-gradient(180deg, #fdf8eb, #ddff82) !important;
+}
+
+.custom-recipe-slider .title-wrapper-with-link {
+  justify-content: center;
+}
+
+.recipe-image-area a {
+  display: block;
+  width: 100%;
+}
+.recipe-image-area a img {
+  width: 100%;
+}
+
+.recipe-blog-area h2 {
+  max-width: 746px;
+  margin: 0 auto 40px;
+  font-size: 52px;
+  text-align: center;
+  color: #17542b;
+}
+
+.recipe-blog-slider.swiper .slider-buttons {
+  position: relative;
+  top: unset;
+  right: unset;
+  gap: 40px;
+  margin-top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.recipe-blog-area .swiper-button-prev,
+.recipe-blog-area .swiper-button-next {
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #17542b;
+  width: 50px;
+  height: 50px;
+  transition: 0.3s ease;
+}
+
+.recipe-blog-area .swiper-button-prev:hover,
+.recipe-blog-area .swiper-button-next:hover {
+  background-color: #17542b;
+  color: #ffffff;
+}

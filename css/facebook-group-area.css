@@ -1,0 +1,34 @@
+.facebook-group-area {
+  position: relative;
+  background-color: #fbf8e6;
+  padding-top: 271px;
+  overflow: hidden;
+}
+
+.facebook-group-area .fb-area-top-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+}
+
+.facebook-group-area .js-logo-slider-section {
+  position: relative;
+  z-index: 1;
+}
+
+.facebook-group-area .js-logo-slider-heading {
+  margin-bottom: 50px;
+  margin-top: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .facebook-group-area {
+    padding-top: 50px;
+  }
+  .facebook-group-area h2.js-logo-slider-heading {
+    font-size: 35px !important;
+    margin-bottom: 15px;
+  }
+}

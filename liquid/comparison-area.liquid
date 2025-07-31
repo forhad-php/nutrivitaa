@@ -1,0 +1,195 @@
+{{ 'comparison-area.css' | asset_url | stylesheet_tag }}
+
+<style>
+  :root {
+    {% if section.settings.background_type == 'color' %}
+      --product-features-bg: {{ section.settings.background_color }};
+    {% elsif section.settings.background_type == 'gradient' %}
+      --product-features-bg: {{ section.settings.background_gradient }};
+    {% else %}
+      --product-features-bg: transparent;
+    {% endif %}
+    --product-features-text: {{ section.settings.text_color }};
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+</style>
+
+<section class="comparison-area">
+  <div>
+    <h2 class="section-title">
+      {{ section.settings.section_title | default: 'Why is Nutrivitaa Peanut Butter the best?' }}
+    </h2>
+
+    <div class="comparison-content-wrapper">
+      <!-- Nutrivitaa Peanut Butter Card -->
+      <div class="comparison-card">
+        <img
+          src="{{ section.settings.nutrivitaa_image | img_url: 'original' }}"
+          alt="product-image"
+          class="card-product-image"
+        >
+        <h3>{{ section.settings.nutrivitaa_title | default: 'Nutrivitaa Peanut Butter' }}</h3>
+        <ul>
+          {% for block in section.blocks %}
+            {% if block.type == 'nutrivitaa' %}
+              <li>
+                <!-- Static SVG icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" viewBox="0 0 24 21" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4041 20.9044C4.66502 20.9044 0 16.2388 0 10.5003C0 4.76177 4.66502 0.0961914 10.4041 0.0961914C13.0356 0.0961914 15.5054 1.05178 17.4293 2.8157C16.7881 3.19592 16.1699 3.61373 15.5779 4.06694C14.1133 2.88407 12.2868 2.24024 10.4041 2.24323C5.85591 2.24323 2.14704 5.9521 2.14704 10.5003C2.14704 15.0485 5.85591 18.7568 10.4041 18.7568C16.7323 18.7568 20.4893 11.9924 17.7676 6.7333C18.303 6.23524 18.8575 5.75801 19.4297 5.30268C20.3404 6.87503 20.8082 8.65833 20.8082 10.4998C20.8082 16.2388 16.1432 20.9044 10.4041 20.9044Z" fill="#17542B"></path>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6777 15.8485C10.6227 15.8477 10.5692 15.8306 10.524 15.7993C10.4788 15.7681 10.4438 15.7241 10.4236 15.673C10.4042 15.6343 8.72554 11.3003 6.12949 9.66043C5.6218 9.34817 5.23148 9.01654 5.38761 8.27465C5.54374 7.5527 6.0315 7.14245 6.91014 6.94756C8.47142 6.61538 10.1506 9.03592 10.7746 10.0314C12.9615 6.85012 17.3336 1.85291 23.6972 1.26716C24.004 1.23117 24.118 1.68627 23.834 1.81361C23.7365 1.85236 14.6401 6.01024 10.9506 15.6924C10.9231 15.7403 10.8833 15.78 10.8353 15.8074C10.7873 15.8348 10.7329 15.849 10.6777 15.8485Z" fill="#17542B"></path>
+                </svg>
+                <span>{{ block.settings.benefit_text }}</span>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Regular Peanut Butter Card -->
+      <div class="comparison-card">
+        <img
+          src="{{ section.settings.regular_image | img_url: 'original' }}"
+          alt="product-image"
+          class="card-product-image"
+        >
+        <h3>{{ section.settings.regular_title | default: 'Regular Peanut Butter' }}</h3>
+        <ul>
+          {% for block in section.blocks %}
+            {% if block.type == 'regular' %}
+              <li>
+                <!-- Static SVG icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                  <path d="M21.2807 20.6115C20.5583 18.8043 18.3431 15.5355 15.9287 12.2763C18.2063 9.66511 20.2727 7.28671 20.8103 6.61471C21.8951 5.25871 21.8207 4.67791 19.7879 4.66831C18.3311 4.66111 17.8271 4.48591 16.8623 5.49631C16.2959 6.08911 15.0767 7.54111 13.6751 9.30991C11.4335 6.42031 9.35753 3.92911 8.48393 3.01231C7.23593 1.70431 6.58313 1.93231 4.69673 1.94191C2.06633 1.95631 1.96793 2.70751 3.37433 4.46191C4.15673 5.44111 7.44233 9.21391 10.8071 13.0683C9.06713 15.4419 7.51193 17.7651 6.98633 19.0827C6.29033 20.8251 7.83833 21.5859 9.15593 20.0499C9.88073 19.2027 11.3567 17.5131 13.0247 15.6027C15.3623 18.2787 17.4695 20.6931 18.4727 21.8643C20.1767 23.8515 22.1831 22.8675 21.2807 20.6115Z" fill="#ED1C24"/>
+                </svg>
+                <span>{{ block.settings.benefit_text }}</span>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparison Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "top_shape_image",
+      "label": "Top Shape Image"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Why is Nutrivitaa Peanut Butter the best?"
+    },
+    {
+      "type": "image_picker",
+      "id": "nutrivitaa_image",
+      "label": "Nutrivitaa Peanut Butter Image"
+    },
+    {
+  "type": "select",
+  "id": "background_type",
+  "label": "Background Type",
+  "options": [
+    { "value": "color", "label": "Solid Color" },
+    { "value": "gradient", "label": "Gradient" },
+    { "value": "none", "label": "None" }
+  ],
+  "default": "color"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Solid Background Color",
+      "default": "#ffffff"
+    },
+    {
+  "type": "color",
+  "id": "text_color",
+  "label": "Text Color",
+  "default": "#000000"
+},
+    {
+      "type": "text",
+      "id": "background_gradient",
+      "label": "Custom Gradient (CSS)",
+      "default": "linear-gradient(135deg, #f9d423 0%, #ff4e50 100%)"
+    },
+    {
+      "type": "text",
+      "id": "nutrivitaa_title",
+      "label": "Nutrivitaa Peanut Butter Title",
+      "default": "Nutrivitaa Peanut Butter"
+    },
+    {
+      "type": "image_picker",
+      "id": "regular_image",
+      "label": "Regular Peanut Butter Image"
+    },
+    {
+      "type": "text",
+      "id": "regular_title",
+      "label": "Regular Peanut Butter Title",
+      "default": "Regular Peanut Butter"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nutrivitaa",
+      "name": "Nutrivitaa Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "benefit_text",
+          "label": "Benefit Text",
+          "default": "Premium Thai Peanuts"
+        }
+      ]
+    },
+    {
+      "type": "regular",
+      "name": "Regular Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "benefit_text",
+          "label": "Benefit Text",
+          "default": "Premium Thai Peanuts"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

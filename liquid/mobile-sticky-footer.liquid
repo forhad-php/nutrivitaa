@@ -1,0 +1,35 @@
+{{ 'mobile-sticky-footer.css' | asset_url | stylesheet_tag }}
+
+<div class="m-sticky-footer">
+  <div class="m-sticky-footer-items">
+    <a href="/collections/all">
+      <span class="svg-wrapper">{{ 'shop.svg' | inline_asset_content }}</span>
+      Shop
+    </a>
+    <a href="/collections/nutrivitaa-combo-packs/combo">
+      <span class="svg-wrapper">{{ 'combo.svg' | inline_asset_content }}</span>
+      Combo
+    </a>
+    <a href="/pages/contact">
+      <span class="svg-wrapper">{{ 'phone.svg' | inline_asset_content }}</span>
+      Contact Us
+    </a>
+    <a href="/account">
+      <span class="svg-wrapper">{{ 'account.svg' | inline_asset_content }}</span>
+      Account
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Mobile Sticky Footer",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Mobile Sticky Footer",
+      "category": "Footer"
+    }
+  ]
+}
+{% endschema %}

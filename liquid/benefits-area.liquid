@@ -1,0 +1,253 @@
+{% comment %} sections/benefits_area.liquid {% endcomment %}
+
+{{ 'benefits-area.css' | asset_url | stylesheet_tag }}
+
+<div class="benefits-area">
+  <!-- Static decorative shapes -->
+  <img src="{{ section.settings.top_shape_image | image_url }}" alt="top shape" class="benefit-area-top-shape">
+  <img src="{{ section.settings.bottom_shape_image | image_url }}" alt="bottom shape" class="benefit-area-bottom-shape">
+
+  <div>
+    <h2 class="section-title">{{ section.settings.title }}</h2>
+    <div class="benefit-content-wrapper">
+      <div class="benefit-lists">
+        <div class="benefit-list-item">
+          <div class="benefit-list-item-icon">
+            <img src="{{ section.settings.icon_image_1 | image_url }}" alt="Heart Shape">
+          </div>
+          <div class="benefit-list-text-content">
+            <h3>{{ section.settings.benefit_title_1 }}</h3>
+            <p>{{ section.settings.benefit_description_1 }}</p>
+          </div>
+        </div>
+        <div class="benefit-list-item">
+          <div class="benefit-list-item-icon">
+            <img src="{{ section.settings.icon_image_2 | image_url }}" alt="Heart Shape">
+          </div>
+          <div class="benefit-list-text-content">
+            <h3>{{ section.settings.benefit_title_2 }}</h3>
+            <p>{{ section.settings.benefit_description_2 }}</p>
+          </div>
+        </div>
+        <div class="benefit-list-item">
+          <div class="benefit-list-item-icon">
+            <img src="{{ section.settings.icon_image_3 | image_url }}" alt="Heart Shape">
+          </div>
+          <div class="benefit-list-text-content">
+            <h3>{{ section.settings.benefit_title_3 }}</h3>
+            <p>{{ section.settings.benefit_description_3 }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="benefit-image-container">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0763/3643/1325/files/arrow-shape.png?v=1751431963"
+          alt="arrow shape"
+          class="benefit-arrow-shape1"
+        >
+        <img
+          src="https://cdn.shopify.com/s/files/1/0763/3643/1325/files/arrow-shape.png?v=1751431963"
+          alt="arrow shape"
+          class="benefit-arrow-shape2"
+        >
+        <img
+          src="https://cdn.shopify.com/s/files/1/0763/3643/1325/files/arrow-shape.png?v=1751431963"
+          alt="arrow shape"
+          class="benefit-arrow-shape3"
+        >
+        <img
+          src="https://cdn.shopify.com/s/files/1/0763/3643/1325/files/arrow-shape.png?v=1751431963"
+          alt="arrow shape"
+          class="benefit-arrow-shape4"
+        >
+        {% if section.settings.image %}
+          <img
+            src="{{ section.settings.image | image_url }}"
+            alt="{{ section.settings.image.alt | escape }}"
+            class="desktop-image benefit-image"
+          >
+          <img
+            src="{{ section.settings.mobile-image | image_url }}"
+            alt="{{ section.settings.image.alt | escape }}"
+            class="mobile-image benefit-image"
+          >
+        {% endif %}
+      </div>
+      <div class="benefit-lists">
+        <div class="benefit-list-item">
+          <div class="benefit-list-item-icon">
+            <img src="{{ section.settings.icon_image_4 | image_url }}" alt="Heart Shape">
+          </div>
+          <div class="benefit-list-text-content">
+            <h3>{{ section.settings.benefit_title_4 }}</h3>
+            <p>{{ section.settings.benefit_description_4 }}</p>
+          </div>
+        </div>
+        <div class="benefit-list-item">
+          <div class="benefit-list-item-icon">
+            <img src="{{ section.settings.icon_image_5 | image_url }}" alt="Heart Shape">
+          </div>
+          <div class="benefit-list-text-content">
+            <h3>{{ section.settings.benefit_title_5 }}</h3>
+            <p>{{ section.settings.benefit_description_5 }}</p>
+          </div>
+        </div>
+        <div class="benefit-list-item">
+          <div class="benefit-list-item-icon">
+            <img src="{{ section.settings.icon_image_6 | image_url }}" alt="Heart Shape">
+          </div>
+          <div class="benefit-list-text-content">
+            <h3>{{ section.settings.benefit_title_6 }}</h3>
+            <p>{{ section.settings.benefit_description_6 }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-button-area">
+      <a href="{{ section.settings.button_link }}" class="btn-2">Order Now</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Benefits Area",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "HEALTH BENEFITS OF PEANUT BUTTER"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_shape_image",
+      "label": "Top Shape Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottom_shape_image",
+      "label": "Bottom Shape Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Center Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile-image",
+      "label": "Moblie Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image_1",
+      "label": "Icon 1"
+    },
+    {
+      "type": "text",
+      "id": "benefit_title_1",
+      "label": "Benefit Title 1",
+      "default": "REDUCES THE RISK OF HEART DISEASE"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_description_1",
+      "label": "Benefit Description 1",
+      "default": "Regular consumption of healthy fats in peanut butter reduces the risk of heart disease and keeps the heart healthy."
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image_2",
+      "label": "Icon 2"
+    },
+    {
+      "type": "text",
+      "id": "benefit_title_2",
+      "label": "Benefit Title 2",
+      "default": "REDUCES THE RISK OF HEART DISEASE"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_description_2",
+      "label": "Benefit Description 2",
+      "default": "Regular consumption of healthy fats in peanut butter reduces the risk of heart disease and keeps the heart healthy."
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image_3",
+      "label": "Icon 3"
+    },
+    {
+      "type": "text",
+      "id": "benefit_title_3",
+      "label": "Benefit Title 3",
+      "default": "REDUCES THE RISK OF HEART DISEASE"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_description_3",
+      "label": "Benefit Description 3",
+      "default": "Regular consumption of healthy fats in peanut butter reduces the risk of heart disease and keeps the heart healthy."
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image_4",
+      "label": "Icon 4"
+    },
+    {
+      "type": "text",
+      "id": "benefit_title_4",
+      "label": "Benefit Title 4",
+      "default": "REDUCES THE RISK OF HEART DISEASE"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_description_4",
+      "label": "Benefit Description 4",
+      "default": "Regular consumption of healthy fats in peanut butter reduces the risk of heart disease and keeps the heart healthy."
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image_5",
+      "label": "Icon 5"
+    },
+    {
+      "type": "text",
+      "id": "benefit_title_5",
+      "label": "Benefit Title 5",
+      "default": "REDUCES THE RISK OF HEART DISEASE"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_description_5",
+      "label": "Benefit Description 5",
+      "default": "Regular consumption of healthy fats in peanut butter reduces the risk of heart disease and keeps the heart healthy."
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image_6",
+      "label": "Icon 6"
+    },
+    {
+      "type": "text",
+      "id": "benefit_title_6",
+      "label": "Benefit Title 6",
+      "default": "REDUCES THE RISK OF HEART DISEASE"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_description_6",
+      "label": "Benefit Description 6",
+      "default": "Regular consumption of healthy fats in peanut butter reduces the risk of heart disease and keeps the heart healthy."
+    },
+    { "type": "url",          "id": "button_link",       "label": "Button Link", },
+  ],
+  "presets": [
+    {
+      "name": "Benefits Area",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

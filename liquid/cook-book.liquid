@@ -1,0 +1,93 @@
+{% comment %} sections/why_choose_us_section.liquid {% endcomment %}
+
+{{ 'cook-book.css' | asset_url | stylesheet_tag }}
+
+<!-- Why Choose Us -->
+<section class="why-choose-us-section">
+  <img
+    src="{{ section.settings.bottom_shape_image | image_url }}"
+    alt="Shape"
+    class="why-choose-us-bottom-shape"
+  >
+
+  <div class="why-choose-us-container">
+    <div class="why-choose-us-image">
+      {% if section.settings.product_image %}
+        <img
+          src="{{ section.settings.product_image | image_url: width: auto, height: auto }}"
+          alt="{{ section.settings.product_name | escape }}"
+          class="why-choose-us-product-image"
+        >
+      {% else %}
+        <img src="https://placehold.co/600x400" alt="Placeholder image" class="why-choose-us-product-image">
+      {% endif %}
+    </div>
+
+    <div class="why-choose-us-content">
+      <h2 class="why-choose-us-title">
+        {{ section.settings.product_title | default: 'Why choose Nutrivitaa Peanut Butter?' }}
+      </h2>
+
+      <ul class="why-choose-us-benefits">
+        {% for block in section.blocks %}
+          <li class="why-choose-us-benefit-item">
+            <!-- Static SVG Icon (same for each benefit) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" viewBox="0 0 24 21" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4041 20.9044C4.66502 20.9044 0 16.2388 0 10.5003C0 4.76177 4.66502 0.0961914 10.4041 0.0961914C13.0356 0.0961914 15.5054 1.05178 17.4293 2.8157C16.7881 3.19592 16.1699 3.61373 15.5779 4.06694C14.1133 2.88407 12.2868 2.24024 10.4041 2.24323C5.85591 2.24323 2.14704 5.9521 2.14704 10.5003C2.14704 15.0485 5.85591 18.7568 10.4041 18.7568C16.7323 18.7568 20.4893 11.9924 17.7676 6.7333C18.303 6.23524 18.8575 5.75801 19.4297 5.30268C20.3404 6.87503 20.8082 8.65833 20.8082 10.4998C20.8082 16.2388 16.1432 20.9044 10.4041 20.9044Z" fill="#17542B"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6777 15.8485C10.6227 15.8477 10.5692 15.8306 10.524 15.7993C10.4788 15.7681 10.4438 15.7241 10.4236 15.673C10.4042 15.6343 8.72554 11.3003 6.12949 9.66043C5.6218 9.34817 5.23148 9.01654 5.38761 8.27465C5.54374 7.5527 6.0315 7.14245 6.91014 6.94756C8.47142 6.61538 10.1506 9.03592 10.7746 10.0314C12.9615 6.85012 17.3336 1.85291 23.6972 1.26716C24.004 1.23117 24.118 1.68627 23.834 1.81361C23.7365 1.85236 14.6401 6.01024 10.9506 15.6924C10.9231 15.7403 10.8833 15.78 10.8353 15.8074C10.7873 15.8348 10.7329 15.849 10.6777 15.8485Z" fill="#17542B"/>
+            </svg>
+            <span>{{ block.settings.benefit_text }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="section-button-area btn-left">
+        <a href="{{ section.settings.button_link }}" class="btn-2">Order Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Choose Us Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bottom_shape_image",
+      "label": "Section Shape Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "product_title",
+      "label": "Product Title",
+      "default": "Why choose Nutrivitaa Peanut Butter?"
+    },
+    { "type": "url",          "id": "button_link",       "label": "Button Link", },
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "benefit_text",
+          "label": "Benefit Text",
+          "default": "Lifetime product return guarantee."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose Us",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

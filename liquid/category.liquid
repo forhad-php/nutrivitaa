@@ -1,0 +1,61 @@
+{{ 'product-category.css' | asset_url | stylesheet_tag }}
+
+<div class="category-list">
+  {%- for block in section.blocks -%}
+    <div class="category-item" {{ block.shopify_attributes }}>
+      <div class="product-image-area">
+        <a href="{{ block.settings.link }}">
+          <img class="product-image" src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
+        </a>
+      </div>
+      <h4>
+        <a href="{{ block.settings.link }}">{{ block.settings.title }}</a>
+      </h4>
+    </div>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Category Cards",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "category_card",
+      "name": "Category Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category name"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product image"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Category Cards Grid",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "category_card"
+        },
+        {
+          "type": "category_card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,71 @@
+.counter-area {
+  position: relative;
+  background-image: url(https://cdn.shopify.com/s/files/1/0763/3643/1325/files/bg2.png?v=1751867906);
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 100px 10px;
+}
+
+.counter-area .counter-bottom-shape {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.counter-area-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.counter-area .counter-area-title {
+  max-width: 746px;
+  margin: 0 auto 40px;
+  font-size: 52px;
+  text-align: center;
+  color: #17542b;
+}
+
+.counter-area .counter-card {
+  background-image: url(/cdn/shop/files/counter-bg-shape.png?v=1751715464) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px 25px;
+}
+
+.counter-area .counter-card h3 {
+  color: #9eea01;
+  font-size: 60px;
+  line-height: 1;
+  margin: 0 0 10px;
+}
+
+.counter-area .counter-card p {
+  color: #ffffff;
+  line-height: 1;
+}
+
+.sticker-img-area img {
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .counter-area {
+    padding: 100px 10px 24px;
+  }
+  .counter-area .counter-area-title {
+    font-size: 32px;
+  }
+  .counter-area-wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

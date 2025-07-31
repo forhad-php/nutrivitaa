@@ -1,0 +1,225 @@
+.footer-area {
+  background-image: url(https://cdn.shopify.com/s/files/1/0763/3643/1325/files/footer-bg.png?v=1752310463);
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.footer-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer-logo-area {
+  max-width: 600px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.footer-logo-area p {
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.53;
+  margin-bottom: 30px;
+}
+
+.footer-social-icons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-logo-area a.footer-social-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff20;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  color: #ffffff;
+}
+
+.footer-logo-area a.footer-social-button svg {
+  width: 20px;
+}
+
+.footer-logo-area a.footer-social-button:hover {
+  color: #16542a;
+  background-color: #ddff82;
+  box-shadow: 0 0 10px -3px #000000a6;
+}
+
+/* Footer Nav Area */
+.footer-nav-area {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 24px;
+  padding: 100px 0;
+}
+
+.footer-left-nav-list-area {
+  border-right: 1px solid #ffffff26;
+}
+
+.footer-right-nav-list-area {
+  border-left: 1px solid #ffffff26;
+  padding-left: 60px;
+}
+
+h4.footer-nav-title {
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.23;
+  margin: 0;
+}
+
+ul.footer-nav-list {
+  margin: 20px 0 0;
+  list-style: none;
+  padding: 0;
+}
+
+ul.footer-nav-list li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.43;
+  margin-top: 10px;
+  display: block;
+}
+
+.footer-contact-area {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer-contact-area h2 {
+  margin: 0;
+  font-size: 42px;
+  line-height: 1.2;
+  color: #ffefeb;
+  font-weight: 400;
+  text-align: center;
+}
+
+ul.footer-contact-list {
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+ul.footer-contact-list li {
+  font-size: 16px;
+  line-height: 1.43;
+  color: #ffffffc7;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+ul.footer-contact-list li img {
+  width: 20px;
+}
+
+input#NewsletterForm--sections--19655620133085__footer_area_GVnGtY {
+  box-shadow: none;
+  outline: none !important;
+  border: none !important;
+  border-radius: 50px;
+  background-color: #fdf8eb;
+  color: #17542b;
+}
+
+.newsletter-form__field-wrapper .field__label {
+  color: #17542b;
+}
+
+.newsletter-form__field-wrapper .field::after {
+  display: none !important;
+}
+
+.newsletter-form__field-wrapper button#Subscribe {
+  background-color: #17542b;
+  border-radius: 50%;
+  color: #fff;
+  right: 8px;
+  top: 5px;
+  width: 36px;
+  height: 36px;
+}
+
+.newsletter-form__field-wrapper .field__button > .svg-wrapper {
+  height: 16px;
+  width: 16px;
+}
+
+.footer-contact-area .form__message {
+  color: #ffffff;
+}
+
+.footer-block__newsletter {
+  margin-top: 20px;
+}
+
+.copyright-area {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.copyright-area p {
+  color: #ffffff;
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.copyright-area p a {
+  color: #ddff82;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-wrapper {
+    padding-bottom: 86px;
+  }
+  .footer-area {
+    padding: 50px 0 0 !important;
+  }
+  .footer-nav-area {
+    grid-template-columns: 1fr;
+    padding: 50px 15px 50px;
+    row-gap: 24px;
+  }
+  .footer-left-nav-list-area,
+  .footer-right-nav-list-area {
+    padding: 0;
+    border: none !important;
+  }
+  .footer-contact-area {
+    margin: 0;
+  }
+  .footer-contact-area h2 {
+    text-align: start;
+    font-size: 26px;
+  }
+  ul.footer-contact-list {
+    justify-content: flex-start;
+  }
+  .copyright-area {
+    gap: 0;
+    justify-content: center;
+  }
+}

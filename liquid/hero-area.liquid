@@ -1,0 +1,105 @@
+{% comment %} sections/hero_area.liquid {% endcomment %}
+
+{{ 'hero-area.css' | asset_url | stylesheet_tag }}
+
+<!-- Hero Area Section -->
+<div class="hero-area">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0763/3643/1325/files/Hero-Sectionbg-bottom-shape.png?v=1751345929"
+    alt="hero-area-shape"
+    class="hero-area-shape"
+  >
+  <div class="hero-area-wrapper">
+    <!-- Right side: Hero Content -->
+    <div class="hero-area-content">
+      <p class="hero-area-quality-badge">{{ section.settings.quality_badge }}</p>
+      <h1 class="hero-area-main-title">{{ section.settings.main_title }}</h1>
+      <p class="hero-area-product-info">
+        <span class="hero-area-weight-badge">{{ section.settings.weight }}</span>
+        <span class="hero-area-weight-text">{{ section.settings.weight_text | newline_to_br }}</span>
+      </p>
+      <h5 class="hero-area-pricing">
+        <del class="hero-area-original-price">{{ section.settings.original_price }}</del>
+        <span class="hero-area-current-price">{{ section.settings.current_price }}</span>
+      </h5>
+      <a href="{{ section.settings.button_link }}" class="hero-area-buy-now-btn">
+        {{ section.settings.button_text }}
+        {% if section.settings.button_arrow_image %}
+          <img src="{{ section.settings.button_arrow_image | image_url }}" alt="Arrow" class="hero-area-btn-arrow-img">
+        {% else %}
+          <span class="hero-area-btn-arrow">{{ section.settings.button_arrow }}</span>
+        {% endif %}
+      </a>
+    </div>
+    <!-- Left side: Hero Media -->
+    <div class="hero-area-media">
+      <div class="hero-area-image-container">
+        {% if section.settings.product_image %}
+          <img
+            src="{{ section.settings.product_image | image_url: width: auto, height: auto }}"
+            alt="{{ section.settings.product_image.alt | escape }}"
+            class="hero-area-image"
+          >
+        {% else %}
+          <img
+            src="https://via.placeholder.com/400x500/4caf50/ffffff?text=Nutrivitaa+Peanut+Butter+Products"
+            alt="Placeholder image"
+            class="hero-area-image"
+          >
+        {% endif %}
+      </div>
+
+      <!-- Callout 1 -->
+      {% if section.settings.callout_image_1 %}
+        <div class="hero-area-callout hero-area-callout-peanut" style="{{ section.settings.callout_position_1 }}">
+          <img
+            src="{{ section.settings.callout_image_1 | image_url: width: auto, height: auto }}"
+            alt="Callout 1"
+            class="hero-area-callout-img"
+          >
+        </div>
+      {% endif %}
+
+      <!-- Callout 2 -->
+      {% if section.settings.callout_image_2 %}
+        <div class="hero-area-callout hero-area-callout-discount" style="{{ section.settings.callout_position_2 }}">
+          <img
+            src="{{ section.settings.callout_image_2 | image_url: width: auto, height: auto }}"
+            alt="Callout 2"
+            class="hero-area-callout-img"
+          >
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Area",
+  "settings": [
+    { "type": "image_picker", "id": "product_image",        "label": "Product Image" },
+    { "type": "image_picker", "id": "callout_image_1",     "label": "Callout 1 Image" },
+    { "type": "text",         "id": "callout_position_1",  "label": "Callout 1 Position", "info": "e.g. top:1rem; left:1rem;" },
+    { "type": "image_picker", "id": "callout_image_2",     "label": "Callout 2 Image" },
+    { "type": "text",         "id": "callout_position_2",  "label": "Callout 2 Position", "info": "e.g. bottom:1rem; right:1rem;" },
+    { "type": "text",         "id": "quality_badge",      "label": "Quality Badge Text",  "default": "100% NATURAL GOODNESS" },
+    { "type": "text",         "id": "main_title",         "label": "Main Title",          "default": "PEANUT BUTTER LESS COMBO" },
+    { "type": "text",         "id": "weight",             "label": "Weight",              "default": "400g" },
+    { "type": "text",         "id": "weight_text",        "label": "Weight Text",         "default": "Peanut<br>Butter" },
+    { "type": "text",         "id": "original_price",     "label": "Original Price",      "default": "1,148₹" },
+    { "type": "text",         "id": "current_price",      "label": "Current Price",       "default": "Now at 1,049₹" },
+    { "type": "text",         "id": "button_text",       "label": "Button Text",        "default": "BUY NOW" },
+    { "type": "url",          "id": "button_link",       "label": "Button Link", },
+    { "type": "text",         "id": "button_arrow",      "label": "Button Arrow (text)", "default": "›" },
+    { "type": "image_picker", "id": "button_arrow_image","label": "Button Arrow Image" },
+    { "type": "color",        "id": "heading_color",      "label": "Heading Color",       "default": "#000000" },
+    { "type": "text",         "id": "heading_font_family","label": "Heading Font Family","default": "inherit" },
+    { "type": "color",        "id": "body_color",         "label": "Body Text Color",     "default": "#000000" },
+    { "type": "text",         "id": "body_font_family",   "label": "Body Font Family",    "default": "inherit" }
+  ],
+  "presets": [
+    { "name": "Hero Area", "category": "Custom" }
+  ]
+}
+{% endschema %}

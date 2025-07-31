@@ -1,0 +1,80 @@
+.comparison-area {
+  position: relative;
+  padding-top: var(--section-padding-top);
+  padding-bottom: var(--section-padding-bottom);
+  background: var(--product-features-bg);
+}
+
+.comparison-area .section-title {
+  font-size: 62px;
+  line-height: 1.23;
+  max-width: 720px;
+  color: var(--product-features-text);
+  text-align: center;
+  margin: 0 auto 50px;
+}
+
+.comparison-content-wrapper {
+  gap: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.comparison-content-wrapper .comparison-card {
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+
+.comparison-content-wrapper .comparison-card img {
+  margin-bottom: 15px;
+}
+
+.comparison-content-wrapper .comparison-card h3 {
+  margin: 0px 0 25px;
+  font-size: 28px;
+  line-height: 1.23;
+}
+
+.comparison-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.comparison-card ul li {
+  gap: 10px;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  margin-top: 10px;
+}
+
+.comparison-card ul li svg {
+  width: 18px;
+  position: relative;
+  top: 1px;
+}
+
+.comparison-card ul li span {
+  font-size: 18px;
+  line-height: 1.43;
+  color: #00000090;
+}
+
+@media screen and (max-width: 600px) {
+  .comparison-area {
+    padding: 20px 0 100px;
+  }
+
+  .comparison-area .section-title {
+    font-size: 32px;
+  }
+
+  .comparison-content-wrapper {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+  }
+}

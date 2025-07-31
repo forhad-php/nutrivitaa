@@ -1,0 +1,341 @@
+{{ 'footer-area.css' | asset_url | stylesheet_tag }}
+<style>
+  :root {
+    --footer-padding-top: {{ section.settings.section_padding_top }}px;
+    --footer-padding-bottom: {{ section.settings.section_padding_bottom }}px;
+  }
+</style>
+
+<section
+  class="footer-area"
+  style="padding-top: var(--footer-padding-top); padding-bottom: var(--footer-padding-bottom);"
+>
+  <div class="footer-wrapper">
+    <!-- Footer Logo Area -->
+    <div class="footer-logo-area">
+      <img src="{{ section.settings.footer_logo | img_url: 'medium' }}" alt="logo" class="footer-logo">
+      <p>{{ section.settings.footer_description }}</p>
+      <ul class="footer-social-icons">
+        {% for block in section.blocks %}
+          {% if block.type == 'social_icon' %}
+            <li>
+              <a href="{{ block.settings.social_icon_link }}" class="footer-social-button">
+                {{ block.settings.social_icon_image }}
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Footer Nav Area -->
+    <div class="footer-nav-area">
+      <!-- First Quick Links Section -->
+      <div class="footer-left-nav-list-area">
+        <h4 class="footer-nav-title">Quick links</h4>
+        <ul class="footer-nav-list">
+          {% for block in section.blocks %}
+            {% if block.type == 'quick_link_1' %}
+              <li>
+                <a href="{{ block.settings.quick_link_url }}">{{ block.settings.quick_link_text }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Footer Contact Section -->
+      <div class="footer-contact-area">
+        <h2>Nutrivitaa ABOUT HEALTH? JOIN OUR NEWSLETTER</h2>
+        <!-- Newsletter Area -->
+        <div
+          class="footer-block--newsletter{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+          {% endif %}
+        >
+          <div class="footer-block__newsletter">
+            {%- if section.settings.newsletter_heading != blank -%}
+              <h2 class="footer-block__heading inline-richtext">{{ section.settings.newsletter_heading }}</h2>
+            {%- endif -%}
+            {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <div class="newsletter-form__field-wrapper">
+                <div class="field">
+                  <input
+                    id="NewsletterForm--{{ section.id }}"
+                    type="email"
+                    name="contact[email]"
+                    class="field__input"
+                    value="{{ form.email }}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    {% if form.errors %}
+                      autofocus
+                      aria-invalid="true"
+                      aria-describedby="ContactFooter-error"
+                    {% elsif form.posted_successfully? %}
+                      aria-describedby="ContactFooter-success"
+                    {% endif %}
+                    placeholder="Enter your email"
+                    required
+                  >
+                  <label class="field__label" for="NewsletterForm--{{ section.id }}"> Enter your email </label>
+                  <button
+                    type="submit"
+                    class="newsletter-form__button field__button"
+                    name="commit"
+                    id="Subscribe"
+                    aria-label="{{ 'newsletter.button_label' | t }}"
+                  >
+                    <span class="svg-wrapper">
+                      {{- 'icon-arrow.svg' | inline_asset_content -}}
+                    </span>
+                  </button>
+                </div>
+                {%- if form.errors -%}
+                  <small class="newsletter-form__message form__message" id="ContactFooter-error">
+                    <span class="svg-wrapper">
+                      {{- 'icon-error.svg' | inline_asset_content -}}
+                    </span>
+                    {{- form.errors.translated_fields.email | capitalize }}
+                    {{ form.errors.messages.email -}}
+                  </small>
+                {%- endif -%}
+              </div>
+              {%- if form.posted_successfully? -%}
+                <h3
+                  class="newsletter-form__message newsletter-form__message--success form__message"
+                  id="ContactFooter-success"
+                  tabindex="-1"
+                  autofocus
+                >
+                  <span class="svg-wrapper">
+                    {{- 'icon-success.svg' | inline_asset_content -}}
+                  </span>
+                  {{- 'newsletter.success' | t }}
+                </h3>
+              {%- endif -%}
+            {%- endform -%}
+          </div>
+
+          {%- if shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}
+            <div class="footer__follow-on-shop">
+              {{ shop | login_button: action: 'follow' }}
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.show_social and has_social_icons -%}
+            {%- render 'social-icons', class: 'footer__list-social' -%}
+          {%- endif -%}
+        </div>
+
+        <!-- Newsletter Area -->
+
+        <ul class="footer-contact-list">
+          {% for block in section.blocks %}
+            {% if block.type == 'footer_contact' %}
+              <li>
+                <img src="{{ block.settings.contact_image | img_url: 'medium' }}" alt="contact-image">
+                <span>{{ block.settings.contact_text }}</span>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Second Quick Links Section (Policies) -->
+      <div class="footer-right-nav-list-area">
+        <h4 class="footer-nav-title">{{ section.settings.policies_title | default: 'Policies' }}</h4>
+        <ul class="footer-nav-list">
+          {% for block in section.blocks %}
+            {% if block.type == 'quick_link_2' %}
+              <li>
+                <a href="{{ block.settings.quick_link_url }}">{{ block.settings.quick_link_text }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright Area -->
+    <div class="copyright-area">
+      <p>
+        Copyright ©
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        <a href="{{ section.settings.copyright_link }}">
+          {{ section.settings.copyright_name }}
+        </a>
+        | All rights reserved.
+      </p>
+      <p>
+        {{ section.settings.powered_by_text }}
+        <a href="{{ section.settings.powered_by_link }}">
+          {{ section.settings.powered_by_name }}
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Footer Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "Footer Logo",
+      "id": "footer_logo",
+      "info": "Upload your footer logo image."
+    },
+    {
+      "type": "textarea",
+      "label": "Footer Description",
+      "id": "footer_description",
+      "default": "Nutrivitaa is your partner for a healthy lifestyle. We provide premium quality nutritious food products that help keep you healthy and strong.",
+      "info": "Write a brief description about your brand."
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "text",
+      "id": "policies_title",
+      "label": "Policies Title",
+      "default": "Policies",
+      "info": "This title will appear for the second quick links section."
+    },
+    {
+  "type": "text",
+  "id": "copyright_name",
+  "label": "Copyright Brand Name",
+  "default": "Nutrivitaa"
+},
+{
+  "type": "text",
+  "id": "copyright_link",
+  "label": "Copyright Brand URL",
+  "default": "#"
+},
+{
+  "type": "text",
+  "id": "powered_by_text",
+  "label": "Powered By Text",
+  "default": "Powered by"
+},
+{
+  "type": "text",
+  "id": "powered_by_name",
+  "label": "Powered By Name",
+  "default": "Microters"
+},
+{
+  "type": "text",
+  "id": "powered_by_link",
+  "label": "Powered By URL",
+  "default": "https://microters.com/"
+}
+  ],
+  "blocks": [
+    {
+      "type": "social_icon",
+      "name": "Social Media Icon",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "social_icon_image",
+          "label": "Social Media Icon Image",
+          "info": "Upload your social media icon image."
+        },
+        {
+          "type": "text",
+          "id": "social_icon_link",
+          "label": "Social Media Link",
+          "default": "#",
+          "info": "Add the URL for the social media profile."
+        }
+      ]
+    },
+    {
+      "type": "quick_link_1",
+      "name": "Quick Link 1",
+      "settings": [
+        {
+          "type": "text",
+          "id": "quick_link_text",
+          "label": "Quick Link Text",
+          "default": "Link"
+        },
+        {
+          "type": "url",
+          "id": "quick_link_url",
+          "label": "Quick Link URL",
+        }
+      ]
+    },
+    {
+      "type": "quick_link_2",
+      "name": "Quick Link 2",
+      "settings": [
+        {
+          "type": "text",
+          "id": "quick_link_text",
+          "label": "Quick Link Text",
+          "default": "Link"
+        },
+        {
+          "type": "url",
+          "id": "quick_link_url",
+          "label": "Quick Link URL",
+        }
+      ]
+    },
+    {
+      "type": "footer_contact",
+      "name": "Footer Contact",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "contact_image",
+          "label": "Contact Image",
+          "info": "Upload the image for the contact info."
+        },
+        {
+          "type": "text",
+          "id": "contact_text",
+          "label": "Contact Info Text",
+          "default": "Address or contact details."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Section",
+      "category": "Footer"
+    }
+  ]
+}
+{% endschema %}

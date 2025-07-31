@@ -1,0 +1,42 @@
+.m-sticky-footer {
+  display: none !important;
+}
+
+@media screen and (max-width: 991px) {
+  .m-sticky-footer {
+    display: block !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #fdf8eb;
+    box-shadow: 0 0 10px #bfbfbf7a;
+    width: 100%;
+    padding: 16px 10px;
+    z-index: 99;
+  }
+
+  .m-sticky-footer-items {
+    gap: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .m-sticky-footer-items a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-decoration: none;
+    color: #000000ad;
+    font-size: 12px;
+  }
+  .m-sticky-footer-items a .svg-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+  }
+}

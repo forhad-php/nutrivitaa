@@ -1,0 +1,78 @@
+{{ 'features-area.css' | asset_url | stylesheet_tag }}
+
+<div class="features-area">
+  <div class="features-content-wrapper">
+    <img src="https://cdn.shopify.com/s/files/1/0763/3643/1325/files/fetures-shape1.png?v=1751458329"  alt="fetures-shape1" class="fetures-shape1">
+    <img src="https://cdn.shopify.com/s/files/1/0763/3643/1325/files/fetures-shape2.png?v=1751458328"  alt="fetures-shape2" class="fetures-shape2">
+    <div class="features-image-area">
+      <!-- Dynamically load image -->
+      <img src="{{ section.settings.image | img_url: 'original' }}" alt="{{ section.settings.image_alt_text }}" class="features-left-image">
+    </div>
+    <div class="features-list-area">
+        {% for block in section.blocks %}
+          <div class="features-list-item">
+            <!-- Dynamically load the title for each feature -->
+            <h3>{{ block.settings.title }}</h3>
+            <!-- Dynamically load the description for each feature -->
+            <p>{{ block.settings.description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Features Area",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "image_alt_text",
+        "label": "Image Alt Text",
+        "default": "Feature Image"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "feature_item",
+        "name": "Feature Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Feature Title",
+            "default": "Feature List Item Title"
+          },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "Feature Description",
+            "default": "Feature List Item Paragraph"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Features Area",
+        "category": "Custom",
+        "blocks": [
+          {
+            "type": "feature_item"
+          },
+          {
+            "type": "feature_item"
+          },
+          {
+            "type": "feature_item"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
